@@ -1,0 +1,24 @@
+/* Body Styling properties example 
+body {
+	font-family: Garamond, ‘Book Antiqua’, Palatino, serif;
+    font-size: 16px;
+}
+
+*/
+
+h1 {
+/*	font-style: oblique; */
+    font-size:48px;
+    color: white;
+        
+}
+
+
+.bg-dark {
+    background-color: rgb(189, 195, 201)!important;
+  }
+
+  .bg-primary {
+    background-color:rgb(195, 56, 255) !important;
+    opacity: 0.5
+  }
