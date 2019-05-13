@@ -1,10 +1,12 @@
 //fill ins
 d3.csv("https://raw.githubusercontent.com/christinelangston/BigData11.154/master/compiled_trends_miami.csv", d3.autoType).then(function(dataTerm){
     var margin = {top: 60, right: 20, bottom: 30, left: 50},
-        width =  1000 - margin.left - margin.right,
+        width =  1100 - margin.left - margin.right,
         height = 665 - margin.top - margin.bottom;
     let value = null;
-    var svg = d3.select("body")
+
+    var chartcontainer = d3.select("#chart");
+    var svg = chartcontainer//d3.select("body")
     .append("svg")
     .attr("width", width)
     .attr("height", height);
@@ -376,7 +378,14 @@ d3.csv("https://raw.githubusercontent.com/christinelangston/BigData11.154/master
           node.dispatchEvent(new CustomEvent("input"));;
       });
     
-   
+      var totalLength = path.node().getTotalLength()
+      path
+            .attr("stroke-dasharray", totalLength + " " + totalLength)
+            .attr("stroke-dashoffset", totalLength)
+         //   .transition()
+           //   .duration(4000)
+            //  .ease(d3.easeLinear)
+              .attr("stroke-dashoffset", 0)
     
         // svg.append("path")
         //  .data([data])
@@ -416,17 +425,373 @@ d3.csv("https://raw.githubusercontent.com/christinelangston/BigData11.154/master
   
   
     
-  
+  //console.log(dataTerm.columns[0])
     
     
-    var totalLength = path.node().getTotalLength()
-    path
-          .attr("stroke-dasharray", totalLength + " " + totalLength)
-          .attr("stroke-dashoffset", totalLength)
-       //   .transition()
-         //   .duration(4000)
-          //  .ease(d3.easeLinear)
-            .attr("stroke-dashoffset", 0)
+selected = {data1: "Spanish", data2: "French"}
+ // selected = {
+function getSelected(value) {
+  var selected = "";
+    switch (value){
+
+      case dataTerm.columns[1]:
+       selected =  {data1: dataTerm.columns[7], data2: dataTerm.columns[8], data3: dataTerm.columns[9], data4: "", data5:"" }//
+        
+      case dataTerm.columns[2]:
+       selected =  {data1: dataTerm.columns[12], data2: dataTerm.columns[13], data3: dataTerm.columns[14], data4: dataTerm.columns[15], data5: dataTerm.columns[16]};
+       
+      case dataTerm.columns[3]:
+       selected = {data1: dataTerm.columns[17], data2: dataTerm.columns[18], data3: dataTerm.columns[19], data4: dataTerm.columns[20], data5: dataTerm.columns[21]};
+        
+      case dataTerm.columns[4]:
+       selected = {data1: dataTerm.columns[22], data2: dataTerm.columns[23], data3: dataTerm.columns[24], data4: dataTerm.columns[25], data5: dataTerm.columns[26]};
+        
+      case dataTerm.columns[5]:
+       selected = {data1: dataTerm.columns[27], data2: dataTerm.columns[28], data3: dataTerm.columns[29], data4: dataTerm.columns[30], data5: ""};
+        
+        case dataTerm.columns[6]: 
+        selected =  {data1: dataTerm.columns[32], data2: dataTerm.columns[33], data3: dataTerm.columns[34], data4: dataTerm.columns[35], data5: ""};
+        
+      default: //case null
+       selected = {data1:"", data2: "", data3: "", data4: "", data5: ""};
+
+    };
+    return selected
+  }
+      
+  // }
     
-    return Object.assign(svg.node(), {value: value});
-  })
+//  console.log(getSelected(value))
+
+
+//selected = getSelected(value)
+
+console.log(value)
+console.log(selected)
+
+
+
+
+            var chart2container = d3.select("#chart2");
+            var svg2 = chart2container//d3.select("body")
+            .append("svg")
+            .attr("width", width)
+            .attr("height", height);
+
+
+          svg2.append("g")
+            .call(xAxis);
+            
+          svg2.append("g")
+            .call(yAxis);
+            
+          
+               
+                var area12 = d3.area()
+                  .x(function(d) { return x(d.Month); })
+                    .y0(height - margin.bottom)
+                 // .y0(function(d) { return y(d["puerto rico: (Miami-Ft. Lauderdale FL)"] - 10); } )
+                  .y1(function(d) { return y(d[selected.data1]); });
+                
+                var area22 = d3.area()
+                  .x(function(d) { return x(d.Month); })
+                    .y0(height - margin.bottom)
+                 // .y0(function(d) { return y(d["puerto rico: (Miami-Ft. Lauderdale FL)"] - 10); } )
+                  .y1(function(d) { return y(d[selected.data2]); });
+                
+                var area32 = d3.area()
+                  .x(function(d) { return x(d.Month); })
+                    .y0(height - margin.bottom)
+                 // .y0(function(d) { return y(d["puerto rico: (Miami-Ft. Lauderdale FL)"] - 10); } )
+                  .y1(function(d) { return y(d[selected.data3]); });
+                
+                var area42 = d3.area()
+                  .x(function(d) { return x(d.Month); })
+                    .y0(height - margin.bottom)
+                 // .y0(function(d) { return y(d["puerto rico: (Miami-Ft. Lauderdale FL)"] - 10); } )
+                  .y1(function(d) { return y(d[selected.data4]); });
+                
+                var area52 = d3.area()
+                  .x(function(d) { return x(d.Month); })
+                    .y0(height - margin.bottom)
+                 // .y0(function(d) { return y(d["puerto rico: (Miami-Ft. Lauderdale FL)"] - 10); } )
+                  .y1(function(d) { return y(d[selected.data5]); });
+                
+              
+              
+                var line12 = d3.line()
+                //  .defined(d => !isNaN(d[selectedData]))
+                  .x(function(d) { return x(d.Month); })
+                  .y(function(d) { return y(d[selected.data1]); });
+                
+                var line22 = d3.line()
+                //  .defined(d => !isNaN(d[selectedData]))
+                  .x(function(d) { return x(d.Month); })
+                  .y(function(d) { return y(d[selected.data2]); });
+                // define the area
+              
+                  var line32 = d3.line()
+                //  .defined(d => !isNaN(d[selectedData]))
+                  .x(function(d) { return x(d.Month); })
+                  .y(function(d) { return y(d[selected.data3]); });
+                // define the area
+                
+                
+                    var line42 = d3.line()
+                //  .defined(d => !isNaN(d[selectedData]))
+                  .x(function(d) { return x(d.Month); })
+                  .y(function(d) { return y(d[selected.data4]); });
+                // define the area
+                
+                    var line52 = d3.line()
+                //  .defined(d => !isNaN(d[selectedData]))
+                  .x(function(d) { return x(d.Month); })
+                  .y(function(d) { return y(d[selected.data5]); });
+                // define the area
+                
+                
+                  var tooltip2 = d3.select("#tooltip");
+              var tooltipWithContent2 = d3.select("body")
+                    .append("div")
+                    .style("position", "absolute")
+                    .style("font-family", "'Open Sans', sans-serif")
+                    .style("font-size", "14px")
+                    .style("z-index", "10")
+                    .style("visibility", "hidden")
+                    .style("opacity", 0.6)
+                    .style("background", "white")
+                    .style("padding", "6px"); 
+                //d3.selectAll("#tooltip, #tooltip *");
+                
+                
+              
+              function equalToEventTarget() {
+                  return this == d3.event.target;
+              }
+              
+              d3.select("body").on("click",function(){
+                  var outside = tooltipWithContent2.filter(equalToEventTarget).empty();
+                  if (outside) {
+                      tooltip2.classed("hidden", true);
+                     value = null;
+                  }
+              });
+                
+                tooltipWithContent2
+                
+                  
+              tooltip2 
+                
+
+              
+                
+                
+                    var AREA12 =  svg2.append("path")
+                     .data([dataTerm])
+                     .attr("class", "area")
+                     .attr("d", area12)
+                      .attr("opacity", 0.1)
+                    .attr("fill", "none")//color1)
+                  .on("mouseover", d => tooltipWithContent2.style("visibility", "visible").text(selected.data1))
+                  .on("mousemove", d => tooltipWithContent2.style("top", (d3.event.pageY-10)+"px").style("left",(d3.event.pageX+10)+"px").text(selected.data1))
+                 .on("mouseout", d => tooltipWithContent2.style("visibility", "hidden"));
+                
+                  var AREA22 =  svg2.append("path")
+                     .data([dataTerm])
+                     .attr("class", "area")
+                     .attr("d", area22)
+                      .attr("opacity", 0.1)
+                    .attr("fill", "none")//color1)
+                  .on("mouseover", d => tooltipWithContent2.style("visibility", "visible").text(selected.data2))
+                  .on("mousemove", d => tooltipWithContent2.style("top", (d3.event.pageY-10)+"px").style("left",(d3.event.pageX+10)+"px").text(selected.data2))
+                 .on("mouseout", d => tooltipWithContent2.style("visibility", "hidden"));
+                
+                
+                  var AREA32 =  svg2.append("path")
+                     .data([dataTerm])
+                     .attr("class", "area")
+                     .attr("d", area32)
+                      .attr("opacity", 0.1)
+                    .attr("fill", "none")//color1)
+                  .on("mouseover", d => tooltipWithContent.style("visibility", "visible").text(selected.data3))
+                  .on("mousemove", d => tooltipWithContent.style("top", (d3.event.pageY-10)+"px").style("left",(d3.event.pageX+10)+"px").text(selected.data3))
+                 .on("mouseout", d => tooltipWithContent.style("visibility", "hidden"));
+                
+                
+                  var AREA42 =  svg2.append("path")
+                     .data([dataTerm])
+                     .attr("class", "area")
+                     .attr("d", area42)
+                      .attr("opacity", 0.1)
+                    .attr("fill", "none")//color1)
+                  .on("mouseover", d => tooltipWithContent2.style("visibility", "visible").text(selected.data4))
+                  .on("mousemove", d => tooltipWithContent2.style("top", (d3.event.pageY-10)+"px").style("left",(d3.event.pageX+10)+"px").text(selected.data4))
+                 .on("mouseout", d => tooltipWithContent2.style("visibility", "hidden"));
+                
+                
+                  var AREA52 =  svg2.append("path")
+                     .data([dataTerm])
+                     .attr("class", "area")
+                     .attr("d", area52)
+                      .attr("opacity", 0.1)
+                    .attr("fill", "none")//color1)
+                  .on("mouseover", d => tooltipWithContent2.style("visibility", "visible").text(selected.data5))
+                  .on("mousemove", d => tooltipWithContent2.style("top", (d3.event.pageY-10)+"px").style("left",(d3.event.pageX+10)+"px").text(selected.data5))
+                 .on("mouseout", d => tooltipWithContent2.style("visibility", "hidden"));
+                
+              
+                  var path12 = svg2.append("path")
+                  .attr("d", line12(dataTerm))
+                    .attr("class", "line")
+                  .attr("stroke", color1) //puerto rico 
+                  .attr("stroke-width", "1")
+                  .attr("fill", "none")
+                   // .on("click", d => area1.attr("fill", "red"))
+                  .on("mouseover", d => tooltipWithContent2.style("visibility", "visible").text(selected.data1))//line1.style("stroke", "black"))//area.attr("style", color1))
+                 .on("mousemove", d => tooltipWithContent2.style("top", (d3.event.pageY-10)+"px").style("left",(d3.event.pageX+10)+"px").text(selected.data1) 
+                 //    && path1.style("stroke", "black") 
+                     && AREA12.attr("fill", color1) 
+                     // && path2.style("stroke", "none") 
+                     // && path3.style("stroke", "none") 
+                     // && path4.style("stroke", "none") 
+                     // && path5.style("stroke", "none")
+                     && AREA12.attr("z-index", "5")
+                     && path12.attr("stroke-width", "2"))
+                  
+                     .on("mouseout", d => tooltipWithContent2.style("visibility", "hidden") 
+                         && path12.attr("stroke-width", "1") 
+                         && AREA12.attr("fill", "none")
+                         && path22.style("stroke", color2) 
+                         && path32.style("stroke", color3) 
+                         && path42.style("stroke", color4) 
+                         && path52.style("stroke", color5))
+                  
+                  .on("click", d => path2.style("stroke", "none") 
+                      && path32.style("stroke", "none") 
+                      && path42.style("stroke", "none") 
+                     && path52.style("stroke", "none"));
+                
+                 
+               var path22 =   svg2.append("path")
+                     .data([dataTerm])
+                     .attr("class", "line")
+                       .style("stroke", color2) // spanish 
+                     .attr("d", line22)
+                  //    .attr("opacity", 0.5)
+                      .attr("fill", "none")
+                   .on("mouseover", d => tooltipWithContent2.style("visibility", "visible").text(selected.data2))
+                .on("mousemove", d => tooltipWithContent2.style("top", (d3.event.pageY-10)+"px").style("left",(d3.event.pageX+10)+"px").text(selected.data2)
+                     && path22.attr("stroke-width", "2") 
+                     && AREA22.attr("fill", color2) 
+                  
+                   &&  path22.attr("stroke-width", "2"))
+                  
+                     .on("mouseout", d => tooltipWithContent2.style("visibility", "hidden") 
+                         && path12.style("stroke", color1) 
+                         && AREA22.attr("fill", "none")
+                         && path22.attr("stroke-width", "1") 
+                         && path32.style("stroke", color3) 
+                         && path42.style("stroke", color4) 
+                         && path52.style("stroke", color5))
+               
+               .on("click", d =>    path12.style("stroke", "none") 
+                     && path32.style("stroke", "none") 
+                     && path42.style("stroke", "none") 
+                     && path52.style("stroke", "none"))
+              ;
+                
+              var  path32 = svg2.append("path")
+                     .data([dataTerm])
+                     .attr("class", "line")
+                       .style("stroke", color3) // spanish 
+                     .attr("d", line32)
+                  //    .attr("opacity", 0.5)
+                      .attr("fill", "none")
+                .on("mouseover", d => tooltipWithContent2.style("visibility", "visible").text(selected.data3))
+                .on("mousemove", d => tooltipWithContent2.style("top", (d3.event.pageY-10)+"px").style("left",(d3.event.pageX+10)+"px").text(selected.data3) && path3.attr("stroke-width", "2")
+                     && AREA32.attr("fill", color3) )
+                     // && path1.style("stroke", "none") 
+                     // && path2.style("stroke", "none") 
+                     // && path4.style("stroke", "none") 
+                     // && path5.style("stroke", "none"))
+                  
+                     .on("mouseout", d => tooltipWithContent2.style("visibility", "hidden") 
+                         && path12.style("stroke", color1) 
+                         && AREA32.attr("fill", "none")
+                         && path22.style("stroke", color2) 
+                         && path32.attr("stroke-width", "1")
+                         && path42.style("stroke", color4) 
+                         && path52.style("stroke", color5))
+              
+               .on("click", d =>    path12.style("stroke", "none") 
+                     && path22.style("stroke", "none") 
+                     && path42.style("stroke", "none") 
+                     && path52.style("stroke", "none"))
+                    ;
+                
+                
+               var   path42 = svg2.append("path")
+                     .data([dataTerm])
+                     .attr("class", "line")
+                       .style("stroke", color4) // spanish 
+                     .attr("d", line42)
+                  //    .attr("opacity", 0.5)
+                      .attr("fill", "none")
+                .on("mouseover", d => tooltipWithContent2.style("visibility", "visible").text(selected.data4))
+                .on("mousemove", d => tooltipWithContent2.style("top", (d3.event.pageY-10)+"px").style("left",(d3.event.pageX+10)+"px").text(selected.data4) && path4.attr("stroke-width", "2")
+                     && AREA42.attr("fill", color4) )
+                     // && path1.style("stroke", "none") 
+                     // && path2.style("stroke", "none") 
+                     // && path3.style("stroke", "none") 
+                     // && path5.style("stroke", "none"))
+                  
+                     .on("mouseout", d => tooltipWithContent2.style("visibility", "hidden") 
+                         && path12.style("stroke", color1) 
+                         && AREA42.attr("fill", "none")
+                         && path22.style("stroke", color2) 
+                         && path32.style("stroke", color3) 
+                         && path42.attr("stroke-width", "1") 
+                         && path52.style("stroke", color5))
+                .on("click", d =>    path12.style("stroke", "none") 
+                     && path22.style("stroke", "none") 
+                     && path32.style("stroke", "none") 
+                     && path52.style("stroke", "none"));
+                
+                
+               var   path52 = svg2.append("path")
+                     .data([dataTerm])
+                     .attr("class", "line")
+                       .style("stroke", color5) // spanish 
+                     .attr("d", line52)
+                  //    .attr("opacity", 0.5)
+                      .attr("fill", "none")
+                .on("mouseover", d => tooltipWithContent2.style("visibility", "visible").text(selected.data5))
+                .on("mousemove", d => tooltipWithContent2.style("top", (d3.event.pageY-10)+"px").style("left",(d3.event.pageX+10)+"px").text(selected.data5) && path5.attr("stroke-width", "2")
+                     && AREA52.attr("fill", color5) )
+
+                  
+                     .on("mouseout", d => tooltipWithContent2.style("visibility", "hidden") 
+                         && path12.style("stroke", color1) 
+                         && AREA52.attr("fill", "none")
+                         && path22.style("stroke", color2) 
+                         && path32.style("stroke", color3) 
+                         && path42.style("stroke", color4) 
+                         && path52.attr("stroke-width", "1"))
+                .on("click", d =>    path1.style("stroke", "none") 
+                     && path22.style("stroke", "none") 
+                     && path32.style("stroke", "none") 
+                     && path42.style("stroke", "none"))
+               ;
+              
+                
+                var totalLength = path12.node().getTotalLength()
+                path12
+                      .attr("stroke-dasharray", totalLength + " " + totalLength)
+                      .attr("stroke-dashoffset", totalLength)
+                   //   .transition()
+                     //   .duration(4000)
+                      //  .ease(d3.easeLinear)
+                        .attr("stroke-dashoffset", 0)
+
+            return Object.assign(svg.node(), {value: value});
+          })

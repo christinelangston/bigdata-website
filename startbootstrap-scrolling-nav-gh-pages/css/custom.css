@@ -16,9 +16,10 @@ h1 {
 
 .bg-dark {
     background-color: rgb(189, 195, 201)!important;
+    opacity: 0.9
   }
 
   .bg-primary {
-    background-color:rgb(195, 56, 255) !important;
-    opacity: 0.5
+    background-color:rgb(112, 60, 232) !important;
+    opacity: 0.8 
   }
