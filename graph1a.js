@@ -464,55 +464,52 @@ d3.csv("https://raw.githubusercontent.com/christinelangston/BigData11.154/master
   //console.log(dataTerm.columns[0])
     
     
-selected = {data1: "Spanish", data2: "French"}
+//selected = {data1: "Spanish", data2: "French"}
  // selected = {
-// function getSelected(value) {
-//   var selected = "";
-//     switch (value){
+function getSelected(value) {
+  var selected = "";
+    switch (value){
 
-//       case dataTerm.columns[1]:
-//        selected =  {data1: dataTerm.columns[7], data2: dataTerm.columns[8], data3: dataTerm.columns[9], data4: "", data5:"" }//
+      case dataTerm.columns[1]:
+       selected =  {data1: dataTerm.columns[7], data2: dataTerm.columns[8], data3: dataTerm.columns[9], data4: "", data5:"" }//
         
-//       case dataTerm.columns[2]:
-//        selected =  {data1: dataTerm.columns[12], data2: dataTerm.columns[13], data3: dataTerm.columns[14], data4: dataTerm.columns[15], data5: dataTerm.columns[16]};
+      case dataTerm.columns[2]:
+       selected =  {data1: dataTerm.columns[12], data2: dataTerm.columns[13], data3: dataTerm.columns[14], data4: dataTerm.columns[15], data5: dataTerm.columns[16]};
        
-//       case dataTerm.columns[3]:
-//        selected = {data1: dataTerm.columns[17], data2: dataTerm.columns[18], data3: dataTerm.columns[19], data4: dataTerm.columns[20], data5: dataTerm.columns[21]};
+      case dataTerm.columns[3]:
+       selected = {data1: dataTerm.columns[17], data2: dataTerm.columns[18], data3: dataTerm.columns[19], data4: dataTerm.columns[20], data5: dataTerm.columns[21]};
         
-//       case dataTerm.columns[4]:
-//        selected = {data1: dataTerm.columns[22], data2: dataTerm.columns[23], data3: dataTerm.columns[24], data4: dataTerm.columns[25], data5: dataTerm.columns[26]};
+      case dataTerm.columns[4]:
+       selected = {data1: dataTerm.columns[22], data2: dataTerm.columns[23], data3: dataTerm.columns[24], data4: dataTerm.columns[25], data5: dataTerm.columns[26]};
         
-//       case dataTerm.columns[5]:
-//        selected = {data1: dataTerm.columns[27], data2: dataTerm.columns[28], data3: dataTerm.columns[29], data4: dataTerm.columns[30], data5: ""};
+      case dataTerm.columns[5]:
+       selected = {data1: dataTerm.columns[27], data2: dataTerm.columns[28], data3: dataTerm.columns[29], data4: dataTerm.columns[30], data5: ""};
         
-//         case dataTerm.columns[6]: 
-//         selected =  {data1: dataTerm.columns[32], data2: dataTerm.columns[33], data3: dataTerm.columns[34], data4: dataTerm.columns[35], data5: ""};
+        case dataTerm.columns[6]: 
+        selected =  {data1: dataTerm.columns[32], data2: dataTerm.columns[33], data3: dataTerm.columns[34], data4: dataTerm.columns[35], data5: ""};
         
-//       default: //case null
-//        selected = {data1:"", data2: "", data3: "", data4: "", data5: ""};
+      default: //case null
+       selected = {data1:"", data2: "", data3: "", data4: "", data5: ""};
 
-//     };
-//     return selected
-//   }
+    };
+    return selected
+  }
       
-  // }
+  
     
 //  console.log(getSelected(value))
 
-
-//selected = getSelected(value)
+console.log(dataTerm)
+selected = getSelected("French") //value
 console.log($("#chart-select").val())
 
 
 $("#chart-select").change(function(e) { 
-  selected = getSelected(this.value);
+  selected = getSelected("French"); //
 });
 
 console.log(value)
 console.log(selected)
-
-
-
 
             var chart2container = d3.select("#chart2");
             var svg2 = chart2container//d3.select("body")
