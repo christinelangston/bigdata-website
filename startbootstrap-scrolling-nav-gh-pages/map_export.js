@@ -1,6 +1,6 @@
 
 
-d3.csv("https://raw.githubusercontent.com/christinelangston/BigData11.154/master/ACS_15_5YR_B16001_with_ann_cleaned_percentage.csv", d3.autoType).then(function(langData){
+d3.csv("https://raw.githubusercontent.com/christinelangston/BigData11.154/master/ACS_15_5YR_B16001_with_ann_cleaned_percentage_round2.csv", d3.autoType).then(function(langData){
     $(document).ready(function(){
         const rateByName = {}
     

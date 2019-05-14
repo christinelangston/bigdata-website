@@ -9,6 +9,8 @@ d3.csv("https://raw.githubusercontent.com/christinelangston/BigData11.154/master
         height = 665 - margin.top - margin.bottom;
     let value = null;
 
+    let  selected = {data1:"", data2: "", data3: "", data4: "", data5: ""};
+
     var chartcontainer = d3.select("#chart");
     var svg = chartcontainer//d3.select("body")
     .append("svg")
@@ -37,6 +39,36 @@ d3.csv("https://raw.githubusercontent.com/christinelangston/BigData11.154/master
             .attr("font-weight", "bold")
             .text(dataTerm.y))
     
+            function getSelected(value) {
+              var selected = "";
+                switch (value){
+            
+                  case dataTerm.columns[1]:
+                   selected =  {data1: dataTerm.columns[7], data2: dataTerm.columns[8], data3: dataTerm.columns[9], data4: "", data5:"" }//
+                    
+                  case dataTerm.columns[2]:
+                   selected =  {data1: dataTerm.columns[12], data2: dataTerm.columns[13], data3: dataTerm.columns[14], data4: dataTerm.columns[15], data5: dataTerm.columns[16]};
+                   
+                  case dataTerm.columns[3]:
+                   selected = {data1: dataTerm.columns[17], data2: dataTerm.columns[18], data3: dataTerm.columns[19], data4: dataTerm.columns[20], data5: dataTerm.columns[21]};
+                    
+                  case dataTerm.columns[4]:
+                   selected = {data1: dataTerm.columns[22], data2: dataTerm.columns[23], data3: dataTerm.columns[24], data4: dataTerm.columns[25], data5: dataTerm.columns[26]};
+                    
+                  case dataTerm.columns[5]:
+                   selected = {data1: dataTerm.columns[27], data2: dataTerm.columns[28], data3: dataTerm.columns[29], data4: dataTerm.columns[30], data5: ""};
+                    
+                    case dataTerm.columns[6]: 
+                    selected =  {data1: dataTerm.columns[32], data2: dataTerm.columns[33], data3: dataTerm.columns[34], data4: dataTerm.columns[35], data5: ""};
+                    
+                  default: //case null
+                   selected = {data1:"", data2: "", data3: "", data4: "", data5: ""};
+            
+                };
+                return selected
+              }
+
+
     //define areas for each language
     
     var area_SP = d3.area()
@@ -301,7 +333,7 @@ d3.csv("https://raw.githubusercontent.com/christinelangston/BigData11.154/master
        //  .on("mouseover", d => PRline.attr("stroke", color1))
           .on("mousemove", d => tooltipWithContent.style("top", (d3.event.pageY-10)+"px").style("left",(d3.event.pageX+10)+"px").text("French"))
           .on("mouseout", d => tooltipWithContent.style("visibility", "hidden") && FRline.attr("stroke", "white"))
-          .on("click", d => {   value = "French";
+          .on("click", d => {   value = "French"; selected  = getSelected("Portuguese");
           const node = svg.node();
           node.value = "French"; //value = value === d.properties.OBJECTID ? null : "Spanish";//d.properties.Name;
           node.dispatchEvent(new CustomEvent("input"));;
@@ -321,7 +353,7 @@ d3.csv("https://raw.githubusercontent.com/christinelangston/BigData11.154/master
       .on("mousemove", d => tooltipWithContent.style("top", (d3.event.pageY-10)+"px").style("left",(d3.event.pageX+10)+"px").text("Chinese"))
       .on("mouseout", d => tooltipWithContent.style("visibility", "hidden") && CHline.attr("stroke", "white"))
           .on("click", d => {
-            value = "Chinese";
+            value = "Chinese"; selected  = getSelected("Portuguese");
           const node = svg.node();
           node.value = "Chinese"; //value = value === d.properties.OBJECTID ? null : "Spanish";//d.properties.Name;
           node.dispatchEvent(new CustomEvent("input"));;
@@ -341,7 +373,7 @@ d3.csv("https://raw.githubusercontent.com/christinelangston/BigData11.154/master
           .on("mouseover", d => tooltipWithContent.style("visibility", "visible").text("Russian") && RUline.attr("stroke", color3))
           .on("mousemove", d => tooltipWithContent.style("top", (d3.event.pageY-10)+"px").style("left",(d3.event.pageX+10)+"px").text("Russian"))
           .on("mouseout", d => tooltipWithContent.style("visibility", "hidden") && RUline.attr("stroke", "white"))
-          .on("click", d => {   value = "Russian";
+          .on("click", d => {   value = "Russian"; selected  = getSelected("Portuguese");
           const node = svg.node();
           node.value = "Russian"; //value = value === d.properties.OBJECTID ? null : "Spanish";//d.properties.Name;
           node.dispatchEvent(new CustomEvent("input"));;
@@ -358,7 +390,7 @@ d3.csv("https://raw.githubusercontent.com/christinelangston/BigData11.154/master
           .on("mouseover", d => tooltipWithContent.style("visibility", "visible").text("French Criole") && FCRline.attr("stroke", color6))
           .on("mousemove", d => tooltipWithContent.style("top", (d3.event.pageY-10)+"px").style("left",(d3.event.pageX+10)+"px").text("French Criole"))
           .on("mouseout", d => tooltipWithContent.style("visibility", "hidden") && FCRline.attr("stroke", "white"))
-          .on("click", d => {   value = "French Criole";
+          .on("click", d => {   value = "French Criole"; selected  = getSelected("Portuguese");
           const node = svg.node();
           node.value = "French Criole"; //value = value === d.properties.OBJECTID ? null : "Spanish";//d.properties.Name;
           node.dispatchEvent(new CustomEvent("input"));;
@@ -376,7 +408,7 @@ d3.csv("https://raw.githubusercontent.com/christinelangston/BigData11.154/master
           .on("mouseover", d => tooltipWithContent.style("visibility", "visible").text("Portuguese") && POline.attr("stroke", color5))
           .on("mousemove", d => tooltipWithContent.style("top", (d3.event.pageY-10)+"px").style("left",(d3.event.pageX+10)+"px").text("Portuguese"))
           .on("mouseout", d => tooltipWithContent.style("visibility", "hidden") && POline.attr("stroke", "white"))
-          .on("click", d => {   value = "Portuguese";
+          .on("click", d => {   value = "Portuguese"; selected  = getSelected("Portuguese");
           const node = svg.node();
           node.value = "Portuguese"; //value = value === d.properties.OBJECTID ? null : "Spanish";//d.properties.Name;
           node.dispatchEvent(new CustomEvent("input"));;
@@ -434,34 +466,34 @@ d3.csv("https://raw.githubusercontent.com/christinelangston/BigData11.154/master
     
 selected = {data1: "Spanish", data2: "French"}
  // selected = {
-function getSelected(value) {
-  var selected = "";
-    switch (value){
+// function getSelected(value) {
+//   var selected = "";
+//     switch (value){
 
-      case dataTerm.columns[1]:
-       selected =  {data1: dataTerm.columns[7], data2: dataTerm.columns[8], data3: dataTerm.columns[9], data4: "", data5:"" }//
+//       case dataTerm.columns[1]:
+//        selected =  {data1: dataTerm.columns[7], data2: dataTerm.columns[8], data3: dataTerm.columns[9], data4: "", data5:"" }//
         
-      case dataTerm.columns[2]:
-       selected =  {data1: dataTerm.columns[12], data2: dataTerm.columns[13], data3: dataTerm.columns[14], data4: dataTerm.columns[15], data5: dataTerm.columns[16]};
+//       case dataTerm.columns[2]:
+//        selected =  {data1: dataTerm.columns[12], data2: dataTerm.columns[13], data3: dataTerm.columns[14], data4: dataTerm.columns[15], data5: dataTerm.columns[16]};
        
-      case dataTerm.columns[3]:
-       selected = {data1: dataTerm.columns[17], data2: dataTerm.columns[18], data3: dataTerm.columns[19], data4: dataTerm.columns[20], data5: dataTerm.columns[21]};
+//       case dataTerm.columns[3]:
+//        selected = {data1: dataTerm.columns[17], data2: dataTerm.columns[18], data3: dataTerm.columns[19], data4: dataTerm.columns[20], data5: dataTerm.columns[21]};
         
-      case dataTerm.columns[4]:
-       selected = {data1: dataTerm.columns[22], data2: dataTerm.columns[23], data3: dataTerm.columns[24], data4: dataTerm.columns[25], data5: dataTerm.columns[26]};
+//       case dataTerm.columns[4]:
+//        selected = {data1: dataTerm.columns[22], data2: dataTerm.columns[23], data3: dataTerm.columns[24], data4: dataTerm.columns[25], data5: dataTerm.columns[26]};
         
-      case dataTerm.columns[5]:
-       selected = {data1: dataTerm.columns[27], data2: dataTerm.columns[28], data3: dataTerm.columns[29], data4: dataTerm.columns[30], data5: ""};
+//       case dataTerm.columns[5]:
+//        selected = {data1: dataTerm.columns[27], data2: dataTerm.columns[28], data3: dataTerm.columns[29], data4: dataTerm.columns[30], data5: ""};
         
-        case dataTerm.columns[6]: 
-        selected =  {data1: dataTerm.columns[32], data2: dataTerm.columns[33], data3: dataTerm.columns[34], data4: dataTerm.columns[35], data5: ""};
+//         case dataTerm.columns[6]: 
+//         selected =  {data1: dataTerm.columns[32], data2: dataTerm.columns[33], data3: dataTerm.columns[34], data4: dataTerm.columns[35], data5: ""};
         
-      default: //case null
-       selected = {data1:"", data2: "", data3: "", data4: "", data5: ""};
+//       default: //case null
+//        selected = {data1:"", data2: "", data3: "", data4: "", data5: ""};
 
-    };
-    return selected
-  }
+//     };
+//     return selected
+//   }
       
   // }
     
@@ -469,6 +501,12 @@ function getSelected(value) {
 
 
 //selected = getSelected(value)
+console.log($("#chart-select").val())
+
+
+$("#chart-select").change(function(e) { 
+  selected = getSelected(this.value);
+});
 
 console.log(value)
 console.log(selected)
@@ -800,4 +838,14 @@ console.log(selected)
             return Object.assign(svg.node(), {value: value});
           })
 
+        });
+
+
+
+        $("#chart-select").change(function(e) { 
+          console.log(("#chart-select").val())
+          selected = getSelected(this.value);
+
+          
+          //selectedData = (this.value);
         });
