@@ -1,8 +1,4 @@
 //fill ins
-
-
-$(document).ready(function(){
-
 d3.csv("https://raw.githubusercontent.com/christinelangston/BigData11.154/master/compiled_trends_miami.csv", d3.autoType).then(function(dataTerm){
     var margin = {top: 60, right: 20, bottom: 30, left: 50},
         width =  1100 - margin.left - margin.right,
@@ -799,5 +795,3 @@ console.log(selected)
 
             return Object.assign(svg.node(), {value: value});
           })
-
-        });
