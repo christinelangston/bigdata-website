@@ -61,14 +61,77 @@ d3.csv("https://raw.githubusercontent.com/christinelangston/BigData11.154/master
 
                     //   }
     //return
-    var totalColor = d3.scaleQuantize()
-     //   .domain([-10, 10000])
-        .domain([0, 100])
-        .range(d3.schemeOranges[9]);
+
+//     domain = [0, 100]
+
+//     var generator = d3.scaleLinear()
+//   .domain([0,(domain.length-1)/2,domain.length-1])
+//   .range([
+//     d3.hsl(-100, 0.95, 0.52),
+//     d3.hsl(  80, 1.15, 0.62),
+//     d3.hsl( 0, 0.55, 0.52)]
+//   )
+//   .interpolate(d3.interpolateCubehelix)
+
+// var range = d3.range(domain.length).map(generator);
+
+   
+
+    // const purples = [
+    //   'purple1',
+    //   'purple2',
+    //   'purple3',
+    //   'purple4',
+    //   'purple5'
+    // ]
+    // var totalColor = d3.scaleLinear().domain([1,100])
+    // .interpolate(d3.interpolateHcl)
+    //      .range(d3.schemeOranges[9]);
+
+   // .range(purples)//["white", "blue"]);
+
+   var totalColor = d3.scaleQuantize()
+   .domain([0, 100])
+   .range(d3.schemeBuGn[9])
+   if ($("#dropdown-select").val() == "English Only"){
+   totalColor.range(d3.schemeOranges[9])
+  }else {
+    totalColor.range(d3.schemeBuGn[9])
+  }
 
     let g = svg.append("g")
 
     legend = function(g) {
+      // if ($("#dropdown-select").val() == "French Creole"){
+      //   totalColor.range(d3.schemeOranges[9])
+      // }else {
+      //   totalColor.range(d3.schemeBuGn[9])
+      // }
+
+      if ($("#dropdown-select").val() == "French Creole"){
+        totalColor.range(d3.schemeOranges[10])
+      }else if ($("#dropdown-select").val() == "French"){
+        totalColor.range(d3.schemePurples[10])
+      }else if ($("#dropdown-select").val() == "Chinese"){
+        totalColor.range(d3.schemeBuPu[10])
+      }else if ($("#dropdown-select").val() == "Russian"){
+        totalColor.range(d3.schemeBuGn[10])
+      }else if ($("#dropdown-select").val() == "Spanish"){
+        totalColor.range(d3.schemeBlues[10])
+      }
+      else{
+        totalColor.range(d3.schemeBlues[9])
+
+      }
+ 
+  //     else {
+  //       totalColor.range(d3.schemeBlues[10])
+
+  // //     totalColor.range(d3.schemePuRd[10])
+  //     //  totalColor.range(d3.schemeRuPu)
+  //     }
+
+
         const x = d3.scaleLinear()
           .domain(d3.extent(totalColor.domain()))
           .rangeRound([0, 260])
@@ -124,6 +187,7 @@ d3.csv("https://raw.githubusercontent.com/christinelangston/BigData11.154/master
         .range(d3.schemeBuGn[9])
       //.range(['lightblue', 'orange', 'lightgreen', 'pink']);
 
+  
 
     //var color = totalColor
     var path = d3.geoPath(bosProjection);
@@ -135,21 +199,42 @@ d3.csv("https://raw.githubusercontent.com/christinelangston/BigData11.154/master
 
 
     function checkRateByName(id){
-    //console.log(id.properties.AFFGEOID)
-      if (id.properties.AFFGEOID in rateByName){
-     //   console.log(rateByName[id.properties.AFFGEOID])
-        if (rateByName[id.properties.AFFGEOID] == 0){
-            return "#fee6ce"
-        }else {
-        c = totalColor(rateByName[id.properties.AFFGEOID])  // quantizeScale
-      //  console.log(c)
-       return c //"blue"
+       g.call(legend);
+        if ($("#dropdown-select").val() == "French Creole"){
+          totalColor.range(d3.schemeOranges[10])
+        }else if ($("#dropdown-select").val() == "French"){
+          totalColor.range(d3.schemePurples[10])
+        }else if ($("#dropdown-select").val() == "Chinese"){
+          totalColor.range(d3.schemeBuPu[10])
+        }else if ($("#dropdown-select").val() == "Russian"){
+          totalColor.range(d3.schemeBuGn[10])
+        }else if ($("#dropdown-select").val() == "Spanish"){
+          totalColor.range(d3.schemeBlues[10])
         }
-      }
-      else{
-       return "none"
-      }
+        
+        
+        
+        else {
+//          totalColor.range(d3.schemePuRd[10])
+totalColor.range(d3.schemeBlues[10])
+
+//          totalColor.range(d3.schemeRuPu)
+        }
+        if (id.properties.AFFGEOID in rateByName){
+        //   console.log(rateByName[id.properties.AFFGEOID])
+            if (rateByName[id.properties.AFFGEOID] == 0){
+                return "#e0dedb"
+            }else {
+                  c = totalColor(rateByName[id.properties.AFFGEOID])  // quantizeScale
+                return c   
+            }
+          }
+          else{
+          return "none"
+          }
     }
+
+console.log($("#dropdown-select").val())
 
     g.selectAll("path")
         .data(topojson.feature(miamiNeighborhoods, miamiNeighborhoods.objects.cb_2017_12_tract_500k).features) // Bind TopoJSON data elements
@@ -195,7 +280,7 @@ d3.csv("https://raw.githubusercontent.com/christinelangston/BigData11.154/master
 
     changeD3Data($("#dropdown-select").val());
     $("#dropdown-select").change(function(e) {
-      $("svg").remove();
+      $("svg").remove();      
       changeD3Data(this.value);
     });
     }

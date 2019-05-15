@@ -20,6 +20,15 @@ h1 {
   }
 
   .bg-primary {
-    background-color:rgb(112, 60, 232) !important;
-    opacity: 0.8 
+    background-color: #5659EB !important;
+    opacity: 0.5 
+  }
+
+  #map-images { 
+
+    height : 1000
+  }
+
+  #map {
+    height : 10
   }

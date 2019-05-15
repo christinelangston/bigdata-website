@@ -5,8 +5,8 @@ $(document).ready(function(){
 
 d3.csv("https://raw.githubusercontent.com/christinelangston/BigData11.154/master/compiled_trends_miami.csv", d3.autoType).then(function(dataTerm){
     var margin = {top: 60, right: 20, bottom: 30, left: 50},
-        width =  1100 - margin.left - margin.right,
-        height = 665 - margin.top - margin.bottom;
+        width =  1000 - margin.left - margin.right,
+        height = 615 - margin.top - margin.bottom;
     let value = null;
 
     let  selected = {data1:"", data2: "", data3: "", data4: "", data5: ""};
@@ -43,7 +43,7 @@ d3.csv("https://raw.githubusercontent.com/christinelangston/BigData11.154/master
               var selected = "";
               if (value == "Spanish"){
                 selected =  {data1: dataTerm.columns[7], data2: dataTerm.columns[8], data3: dataTerm.columns[9], data4: "", data5:"" }//
-              }else if (value == "French Creole"){
+              }else if (value == "French Criole"){
                 selected =  {data1: dataTerm.columns[12], data2: dataTerm.columns[13], data3: dataTerm.columns[14], data4: dataTerm.columns[15], data5: dataTerm.columns[16]};
               }else if (value == "Portuguese"){
                 selected = {data1: dataTerm.columns[22], data2: dataTerm.columns[23], data3: dataTerm.columns[24], data4: dataTerm.columns[25], data5: dataTerm.columns[26]};
@@ -58,7 +58,11 @@ d3.csv("https://raw.githubusercontent.com/christinelangston/BigData11.154/master
 
                 };
       
-
+        svg.append("g")
+                .call(xAxis);
+                
+        svg.append("g")
+                .call(yAxis);
 
     //define areas for each language
     
@@ -165,13 +169,20 @@ d3.csv("https://raw.githubusercontent.com/christinelangston/BigData11.154/master
     tooltipWithContent   
     tooltip 
    
-      var color1 = d3.rgb(195, 56, 255);
-     var color2 = d3.rgb(112, 60, 232);
-     var color3 = d3.rgb(79, 97, 255);
-     var color4 = d3.rgb(66, 231, 255);
-    var color5 = "steelblue"
-    var color6 = "red"
+      var color1 = "#D04DFF" //Purple       
+     var color2 = "#9AFF5E";//Leafy Green  
+     var color3 = "#5659EB" //Blue Purple
+     var color4 = "#6BDAFF"//Sky Blue
+    var color5 = "#55EB9E"// Lime Green
+    var color6 = "#FFB233";//Red/Orange
   
+
+//     Red/Orange - #FFB233
+// Purple - #D04DFF
+// Blue Purple - #5659EB
+// Sky Blue - #6BDAFF
+// Lime Green - #55EB9E
+// Leafy Green - #9AFF5E
   
      var t1 = textures.circles()
     .size(5)
@@ -180,7 +191,7 @@ d3.csv("https://raw.githubusercontent.com/christinelangston/BigData11.154/master
     
      var t2 = textures.circles()
     .size(5)
-    .radius(4)
+    .radius(1.5)
     .fill(color2)
      
       var t3 = textures.circles()
@@ -203,7 +214,7 @@ d3.csv("https://raw.githubusercontent.com/christinelangston/BigData11.154/master
        
         var t5 = textures.circles()
     .size(5)
-    .radius(1)
+    .radius(2)
     .fill(color5)
         
         
@@ -232,7 +243,7 @@ d3.csv("https://raw.githubusercontent.com/christinelangston/BigData11.154/master
       var CHline = svg.append("path")
       .attr("d", line_CH(dataTerm))
         .attr("class", "line")
-      .attr("stroke", "none") //puerto rico 
+      .attr("stroke", "none")  
       .attr("stroke-width", "1.5")
       .attr("fill", "none")
         .attr("opacity", "0.5");
@@ -260,7 +271,15 @@ d3.csv("https://raw.githubusercontent.com/christinelangston/BigData11.154/master
         .attr("class", "line")
       .attr("stroke", "white") //puerto rico 
       .attr("stroke-width", "1.5")
-      .attr("fill", "none")  .attr("opacity", "0.5");
+      .attr("fill", "none")  .attr("opacity", "0.5")
+      // .on("mouseover", d => tooltipWithContent.style("visibility", "visible").text("French Criole") && FCRline.attr("stroke", color6))
+      // .on("mousemove", d => tooltipWithContent.style("top", (d3.event.pageY-10)+"px").style("left",(d3.event.pageX+10)+"px").text("French Criole"))
+      // .on("mouseout", d => tooltipWithContent.style("visibility", "hidden") && FCRline.attr("stroke", "white"))
+      // .on("click", d => {   value = "French Criole";             console.log(value);
+      // selected  = getSelected("Portuguese");     updateLines(getSelected(value));
+      // const node = svg.node();
+      // node.value = "French Criole"; //value = value === d.properties.OBJECTID ? null : "Spanish";//d.properties.Name;
+      // node.dispatchEvent(new CustomEvent("input")});
   
     
       var RUline = svg.append("path")
@@ -283,7 +302,7 @@ d3.csv("https://raw.githubusercontent.com/christinelangston/BigData11.154/master
          .on("mouseover", d => tooltipWithContent.style("visibility", "visible").text("Spanish") && SPline.attr("stroke", color4))
       .on("mousemove", d => tooltipWithContent.style("top", (d3.event.pageY-10)+"px").style("left",(d3.event.pageX+10)+"px").text("Spanish"))
       .on("mouseout", d => tooltipWithContent.style("visibility", "hidden") && SPline.attr("stroke", "white"))
-    .on("click", d => { value = "Spanish"; console.log(value); selected = getSelected(value); console.log(selected);
+    .on("click", d => { value = "Spanish"; console.log(value);
     updateLines(getSelected(value));
           const node = svg.node();
           node.value = "Spanish"; //value = value === d.properties.OBJECTID ? null : "Spanish";//d.properties.Name;
@@ -304,7 +323,7 @@ d3.csv("https://raw.githubusercontent.com/christinelangston/BigData11.154/master
        //  .on("mouseover", d => PRline.attr("stroke", color1))
           .on("mousemove", d => tooltipWithContent.style("top", (d3.event.pageY-10)+"px").style("left",(d3.event.pageX+10)+"px").text("French"))
           .on("mouseout", d => tooltipWithContent.style("visibility", "hidden") && FRline.attr("stroke", "white"))
-          .on("click", d => {   value = "French"; selected  = getSelected("Portuguese");     updateLines(getSelected(value));
+          .on("click", d => {   value = "French";   console.log(value); updateLines(getSelected(value));
           const node = svg.node();
           node.value = "French"; //value = value === d.properties.OBJECTID ? null : "Spanish";//d.properties.Name;
           node.dispatchEvent(new CustomEvent("input"));;
@@ -317,14 +336,13 @@ d3.csv("https://raw.githubusercontent.com/christinelangston/BigData11.154/master
          .attr("class", "area")
          .attr("d", area_CH)
           .attr("opacity", 0.5)
-      //    .attr("fill", color2)
+          .attr("fill", color3)
          .style("fill", t3.url())
-      .on("mouseover", d => tooltipWithContent.style("visibility", "visible").text("Chinese") && CHline.attr("stroke", color2))
+      .on("mouseover", d => tooltipWithContent.style("visibility", "visible").text("Chinese") && CHline.attr("stroke", color3))
    //     .on("mouseover", d => rectangle.style("fill", "red"))
       .on("mousemove", d => tooltipWithContent.style("top", (d3.event.pageY-10)+"px").style("left",(d3.event.pageX+10)+"px").text("Chinese"))
       .on("mouseout", d => tooltipWithContent.style("visibility", "hidden") && CHline.attr("stroke", "white"))
-          .on("click", d => {
-            value = "Chinese"; selected  = getSelected("Portuguese");     updateLines(getSelected(value));
+          .on("click", d => { value = "Chinese";   console.log(value);  updateLines(getSelected(value));
           const node = svg.node();
           node.value = "Chinese"; //value = value === d.properties.OBJECTID ? null : "Spanish";//d.properties.Name;
           node.dispatchEvent(new CustomEvent("input"));;
@@ -339,12 +357,12 @@ d3.csv("https://raw.githubusercontent.com/christinelangston/BigData11.154/master
          .attr("class", "area")
          .attr("d", area_RU)
           .attr("opacity", 0.5)
-          .attr("fill", color3)
-           .style("fill", t3.url())
-          .on("mouseover", d => tooltipWithContent.style("visibility", "visible").text("Russian") && RUline.attr("stroke", color3))
+          .attr("fill", color2)
+           .style("fill", t2.url())
+          .on("mouseover", d => tooltipWithContent.style("visibility", "visible").text("Russian") && RUline.attr("stroke", color2))
           .on("mousemove", d => tooltipWithContent.style("top", (d3.event.pageY-10)+"px").style("left",(d3.event.pageX+10)+"px").text("Russian"))
           .on("mouseout", d => tooltipWithContent.style("visibility", "hidden") && RUline.attr("stroke", "white"))
-          .on("click", d => {   value = "Russian"; selected  = getSelected("Portuguese");     updateLines(getSelected(value));
+          .on("click", d => {   value = "Russian";  console.log(value);  updateLines(getSelected(value));
           const node = svg.node();
           node.value = "Russian"; //value = value === d.properties.OBJECTID ? null : "Spanish";//d.properties.Name;
           node.dispatchEvent(new CustomEvent("input"));;
@@ -358,10 +376,11 @@ d3.csv("https://raw.githubusercontent.com/christinelangston/BigData11.154/master
          .attr("d", area_FCR)
           .attr("opacity", 0.5)
           .attr("fill", color6)
-          .on("mouseover", d => tooltipWithContent.style("visibility", "visible").text("French Criole") && FCRline.attr("stroke", color6))
-          .on("mousemove", d => tooltipWithContent.style("top", (d3.event.pageY-10)+"px").style("left",(d3.event.pageX+10)+"px").text("French Criole"))
+          .on("mouseover", d => tooltipWithContent.style("visibility", "visible").text("French Creole") && FCRline.attr("stroke", color6))
+          .on("mousemove", d => tooltipWithContent.style("top", (d3.event.pageY-10)+"px").style("left",(d3.event.pageX+10)+"px").text("French Creole"))
           .on("mouseout", d => tooltipWithContent.style("visibility", "hidden") && FCRline.attr("stroke", "white"))
-          .on("click", d => {   value = "French Criole"; selected  = getSelected("Portuguese");     updateLines(getSelected(value));
+          .on("click", d => {   value = "French Criole";   console.log(value); console.log(value);
+          updateLines(getSelected(value));
           const node = svg.node();
           node.value = "French Criole"; //value = value === d.properties.OBJECTID ? null : "Spanish";//d.properties.Name;
           node.dispatchEvent(new CustomEvent("input"));;
@@ -379,7 +398,7 @@ d3.csv("https://raw.githubusercontent.com/christinelangston/BigData11.154/master
           .on("mouseover", d => tooltipWithContent.style("visibility", "visible").text("Portuguese") && POline.attr("stroke", color5))
           .on("mousemove", d => tooltipWithContent.style("top", (d3.event.pageY-10)+"px").style("left",(d3.event.pageX+10)+"px").text("Portuguese"))
           .on("mouseout", d => tooltipWithContent.style("visibility", "hidden") && POline.attr("stroke", "white"))
-          .on("click", d => {   value = "Portuguese"; selected  = getSelected("Portuguese");     updateLines(getSelected(value));
+          .on("click", d => {   value = "Portuguese";   console.log(value);  updateLines(getSelected(value));
           const node = svg.node();
           node.value = "Portuguese"; //value = value === d.properties.OBJECTID ? null : "Spanish";//d.properties.Name;
           node.dispatchEvent(new CustomEvent("input"));;
@@ -496,6 +515,7 @@ console.log(selected)
             .call(yAxis);
             
           function updateLines(selected){
+            console.log(selected);
                svg2.append("rect")
                //   svg.append("rect")
     .attr("width", "100%")
@@ -598,12 +618,9 @@ console.log(selected)
               });
                 
                 tooltipWithContent2
-                
                   
               tooltip2 
-                
-     
-                
+
                     var AREA12 =  svg2.append("path")
                      .data([dataTerm])
                      .attr("class", "area")
@@ -684,7 +701,7 @@ console.log(selected)
                          && path42.style("stroke", color4) 
                          && path52.style("stroke", color5))
                   
-                  .on("click", d => path2.style("stroke", "none") 
+                  .on("click", d => path22.style("stroke", "none") 
                       && path32.style("stroke", "none") 
                       && path42.style("stroke", "none") 
                      && path52.style("stroke", "none"));

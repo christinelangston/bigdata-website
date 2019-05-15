@@ -89,6 +89,15 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-8 mx-auto">
+
+            
+            <!-- <img src="images/chinese-map.png" align = "left" alt="Girl in a jacket" style="width:500px;height:360px;">
+            <img src="images/french-map.png"align = "top"  alt="French Map" style="width:500px;height:360px;">
+            <img src="images/french-creole-map.png" align = "right" alt="Girl in a jacket" style="width:500px;height:360px;">
+            <img src="images/english-only-map.png" alt="Girl in a jacket" style="width:500px;height:360pxpx;">
+            <img src="images/russian-map.png" alt="Girl in a jacket" style="width:500px;height:360px;"> -->
+
+
           <h2>Demographics</h2>
           <p class="lead">This is a great place to talk about your webpage. This template is purposefully unstyled so you can use it as a boilerplate or starting point for you own landing page designs! This template features:</p>
           <ul>
@@ -101,6 +110,12 @@
       </div>
     </div>
   </section>
+
+
+
+
+
+
 
   <section id="langtrends" class="bg-light">
     <div class="container">
@@ -134,19 +149,61 @@
     </div>
   </section>
 
+  <section id = "map-text"> 
+      <div class="container">
+          <div class="col-lg-8 mx-auto">
+              <h2>Maps here</h2>
+              <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero odio fugiat voluptatem dolor, provident officiis, id iusto! Obcaecati incidunt, qui nihil beatae magnam et repudiandae ipsa exercitationem, in, quo totam.</p>
+        </div>    
+
+</div>
+  </section>
+
+  <section id = "map-images1">
+      <div class = "container">
+          <div class="row">
+            
+              <img align = left src="images/russian-map.png" STYLE="position:absolute; LEFT:10px; WIDTH:35%" alt="Snow" style="width:30%">
+      
+              <img align = center src="images/spanish-map.png" STYLE="position:absolute;  LEFT:360px; WIDTH:35%" alt="Forest" style="width:30%">
+         
+              <img src="images/portuguese-map.png" STYLE="position:absolute;  LEFT:710px; WIDTH:35%" alt="Mountains" style="width:30%">
+     
+                
+            </div>
+            
+      </div>
+  </section>
+  <section id = "map-images2">
+      <div class = "container">
+          <div class="row">
+            
+              <img align = left src="images/chinese-map.png" STYLE="position:absolute; LEFT:10px; WIDTH:35%" alt="Snow" style="width:30%">
+      
+              <img align = center src="images/french-map.png" STYLE="position:absolute;  LEFT:360px; WIDTH:35%" alt="Forest" style="width:30%">
+         
+              <img src="images/french-creole-map.png" STYLE="position:absolute;  LEFT:710px; WIDTH:35%" alt="Mountains" style="width:30%">
+     
+                
+            </div>
+            
+      </div>
+  </section>
+
   <section id="map" >
     <div class="container">
       <div class="row">
-        <div class="col-lg-8 mx-auto">
+        <!-- <div class="col-lg-8 mx-auto">
           <h2>Maps here</h2>
           <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero odio fugiat voluptatem dolor, provident officiis, id iusto! Obcaecati incidunt, qui nihil beatae magnam et repudiandae ipsa exercitationem, in, quo totam.</p>
-         <!-- <script type="text/javascript" src="graph1a.js"></script>-->
+         <script type="text/javascript" src="graph1a.js"></script> -->
          <div class="dropdown">
+          <div id="mapSelector">
             <form id="dropdown-form">
                     <select id="dropdown-select">
     
-                            <option value="English Only">English Only</option>
-                            <option value="Spanish">Spanish or Spanish Creole</option>
+                            <option value="english-only-map.png">English Only</option>
+                            <option value="spanish-map.png">Spanish or Spanish Creole</option>
                             <option value="French">French (incl. Patois, Cajun)</option>
                             <option value="French Creole">French Creole</option>
                             <option value="Portuguese">Portuguese or Portuguese Creole</option>
@@ -162,13 +219,50 @@
                     </select>
             </form>
           </div>
+          </div>
           <body>
-          <div id = "map">
-              <script async type = "text/javascript" src = "map_exportDG.js" align = "center"> </script>
-        </div></body>
+          <!-- <div id = "mapBox"> -->
+              <!-- <script async type = "text/javascript" src = "map_exportDG.js" align = "center"> </script> -->
+              <script type="text/javascript">
+                $(document).ready(function(){
+                  var updateMap = function() { 
+                    var filename = $("#dropdown-select").val();
+                    $("#mapBox").empty();
+                    var htmlString = '<img width = "80%" id="theMapImg" src="images/' + filename + '" />';
+                    console.log(htmlString);
+                    $("#mapBox").append(htmlString);
+                  }
+
+                  updateMap();
+                  
+
+                  $("#dropdown-select").change(function(e) {
+                    updateMap();
+                  });
+                });
+              </script>
+                </div></body>
       </div>
     </div>
   </section>
+
+  <section id="mapBox"></section>
+
+      
+
+
+
+        <section id="extra space" ">
+            <div class="container">
+              <div class="row">
+                <div class="col-lg-8 mx-auto">
+                  <!-- <h2>Business Section </h2>
+                  <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero odio fugiat voluptatem dolor, provident officiis, id iusto! Obcaecati incidunt, qui nihil beatae magnam et repudiandae ipsa exercitationem, in, quo totam.</p>
+               -->
+                </div> 
+              </div>
+            </div>
+          </section>
 
 
   <section id="businesses" class="bg-light">
