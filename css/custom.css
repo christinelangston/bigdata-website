@@ -8,11 +8,14 @@ body {
 
 h1 {
 /*	font-style: oblique; */
-    font-size:48px;
+    font-size:80px;
     color: white;
         
 }
 
+header{
+background-image: url("images/miami-art-deco-district.jpg");
+}
 
 .bg-dark {
     background-color: rgb(189, 195, 201)!important;
@@ -46,3 +49,11 @@ height: 1000
   #chart{
     padding-left : 90px
   }
+
+  span.Spanish {color:#6BDAFF}
+  span.French {color:#D04DFF}
+  span.Creole {color:#FFB233}
+  span.Russian {color:#9AFF5E}
+  span.Chinese {color:#5659EB}
+  span.Portuguese {color:#55EB9E}
+

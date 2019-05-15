@@ -8,7 +8,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Sounds of the City</title>
+  <title>Listen to Our City</title>
   <!-- JQuery library-->
   <script src="vendor/jquery/jquery.min.js"></script>
   <!-- D3 Library-->
@@ -36,7 +36,7 @@
   <!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
     <div class="container">
-      <a class="navbar-brand js-scroll-trigger" href="#page-top">Sounds of the City</a>
+      <a class="navbar-brand js-scroll-trigger" href="#page-top">Listen to Our City</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -46,13 +46,13 @@
             <a class="nav-link js-scroll-trigger" href="#introduction">Introduction</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#langtrends">Language Trends</a>
+            <a class="nav-link js-scroll-trigger" href="#langtrends">Word Trends</a>
           </li>
           <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="#map-text">Map</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#businesses">Businesses</a>
+            <a class="nav-link js-scroll-trigger" href="#businesses">Industries</a>
           </li>
           <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="#info">Learn More</a>
@@ -63,10 +63,17 @@
   </nav>
 
 
-<section> 
+<section id= "title"> 
 <header class="bg-primary text-white" >
+    <!-- <style>
+        body {
+        background-image: url("images/miami-art-deco-district.jpg");
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-position: center;
+     </style> -->
     <div class="container text-center">
-      <h1>Cultures Enlivening Cities</h1>
+      <h1>Listen to Our City</h1>
       <p class="lead">Elizabeth Borneman and Christine Langston</p>
       <p class="lead">11.154 Big Data, Visualization & Society ~~ May 2019</p>
     </div>
@@ -86,9 +93,6 @@
 </section> -->
 
 
-<section id="intro-image"><img  width = "90%" STYLE="position:absolute; left:5%" src = "images/miami-art-deco-district.jpg"></section>
-  <section id = "intro-image2"></section>
-  <section id = "intro-image2"></section>
 
 
   <section id="introduction">
@@ -97,19 +101,22 @@
         <div class="col-lg-8 mx-auto">
 
           <h2>Introduction</h2>
-          <p class="lead">This is a great place to talk about your webpage. This template is purposefully unstyled so you can use it as a boilerplate or starting point for you own landing page designs! This template features:</p>
-          <ul>
+          <p class="lead">Cities are at the forefront of migration dynamics. They not only influence immigrants’ well-being and assimilation, but are also strongly influenced by immigrants. Immigrants themselves can be key players in a city’s culture, development, and livability for anyone in the city, as well as for future immigrants. </p>
+          <!-- <ul>
             <li>Clickable nav links that smooth scroll to page sections</li>
             <li>Responsive behavior when clicking nav links perfect for a one page website</li>
             <li>Bootstrap's scrollspy feature which highlights which section of the page you're on in the navbar</li>
             <li>Minimal custom CSS so you are free to explore your own unique design options</li>
-          </ul>
+          </ul> -->
         </div>
       </div>
     </div>
   </section>
 
   
+<section id="intro-image"><img  id = "miami-image" width = "90%" STYLE="position:absolute; left:5%" src = "images/miami-art-deco-district.jpg"></section>
+<section id = "intro-image2"></section>
+<section id = "intro-image2"></section>
 
 <!-- 
   <script type="text/javascript">
@@ -130,14 +137,8 @@
         <div class="row">
           <div class="col-lg-8 mx-auto">
   
-            <h2>Introduction 2 </h2>
-            <p class="lead">This is a great place to talk about your webpage. This template is purposefully unstyled so you can use it as a boilerplate or starting point for you own landing page designs! This template features:</p>
-            <ul>
-              <li>Clickable nav links that smooth scroll to page sections</li>
-              <li>Responsive behavior when clicking nav links perfect for a one page website</li>
-              <li>Bootstrap's scrollspy feature which highlights which section of the page you're on in the navbar</li>
-              <li>Minimal custom CSS so you are free to explore your own unique design options</li>
-            </ul>
+            <h2>Let's focus on Miami </h2>
+            <p class="lead"> The United Nations Development Program (UNDP) ranked Miami, FL first in terms of its percentage of foreign-born residents at 59% (World Population Review). Miami is a vibrant example of a city in which immigrants shape and contribute to cultural richness and social activity. Socio-cultural diversity and the creative class are key aspects determining city livability, so we set out to visualize measures of cultural heritage across Miami (Takahashi et. al). </p>
           </div>
         </div>
       </div>
@@ -149,14 +150,8 @@
           <div class="row">
             <div class="col-lg-8 mx-auto">
     
-              <h2>Introduction 3 </h2>
-              <p class="lead">This is a great place to talk about your webpage. This template is purposefully unstyled so you can use it as a boilerplate or starting point for you own landing page designs! This template features:</p>
-              <ul>
-                <li>Clickable nav links that smooth scroll to page sections</li>
-                <li>Responsive behavior when clicking nav links perfect for a one page website</li>
-                <li>Bootstrap's scrollspy feature which highlights which section of the page you're on in the navbar</li>
-                <li>Minimal custom CSS so you are free to explore your own unique design options</li>
-              </ul>
+              <h2>Spoken Language </h2>
+              <p class="lead">We focus on languages as vehicles through which intangible cultural heritage (IHC) is expressed and transmitted, with language statistics providing a way of understanding the social and natural environment of given cultural groups. Through visualizing/examining language we can capture various cultural domains across Miami: Performance and Celebration, Visual Arts and Crafts, Books and Press, Design and Creative Services, and Tourism. </p>
             </div>
           </div>
         </div>
@@ -171,8 +166,11 @@
       <div class="row">
         <div class="col-lg-8 mx-auto">
           <h2>Language Trends</h2>
+          
           <p class="lead">We chose to look into 6 main languages based on number of speakers in Miami.  </p>
-            <p>Spanish, French, French Creole, Portuguese, Russian, Chinese</p>
+          <p class = "lead"><span class = "Spanish">Spanish, </span> <span class = "French"> French, </span> <span class = "Creole"> Creole, </span> <span class = "Russian"> Russian, </span> <span class = "Chinese"> Chinese, </span><span class = "Portuguese">and Portuguese</span></p>
+
+          <p class = "lead">Below is the prevalance of search terms on Google over time, which we can use as an indication of what is actually being talked about in Miami.</p>
         </div>
       </div>
     </div>
