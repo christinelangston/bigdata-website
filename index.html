@@ -46,13 +46,17 @@
             <a class="nav-link js-scroll-trigger" href="#introduction">Introduction</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#langtrends">Word Trends</a>
-          </li>
+              <a class="nav-link js-scroll-trigger" href="#demographics">Demographics</a>
+            </li>
+     
           <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="#map-text">Map</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#businesses">Industries</a>
+              <a class="nav-link js-scroll-trigger" href="#langtrends">Word Trends</a>
+            </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#industries">Industries</a>
           </li>
           <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="#info">Learn More</a>
@@ -75,7 +79,7 @@
     <div class="container text-center">
       <h1>Listen to Our City</h1>
       <p class="lead">Elizabeth Borneman and Christine Langston</p>
-      <p class="lead">11.154 Big Data, Visualization & Society ~~ May 2019</p>
+      <!-- <p class="lead">11.154 Big Data, Visualization & Society -- May 2019</p> -->
     </div>
   </header>
 </section>
@@ -157,38 +161,34 @@
         </div>
       </section>
 
+      <section id="demographics" class="bg-light">
+          <div class="container">
+            <div class="row">
+              <div class="col-lg-8 mx-auto">
+                <h2>Demographics</h2>
+                
+                <p class = "lead">According to the UN Principles and Recommendations on Population and Housing Censuses (UN, 2007), we can measure IHC using data on the usual language most often spoken by individuals in the home. 
 
+                    </p>
+                    <p class = "lead">                    Each shape represents the proportion of speakers within MIami’s total population, who primarily speak one of the top 7 languages (Spanish, Creole, French (incl Patois), Portuguese, Russian, and Chinese, and English) at home.  We ranked these 7 languages by absolute number of speakers in Miami Dade County (US Census Bureau 2013). 
+                      </p>
+              </div>
+            </div>
+          </div>
+        </section>
+    
+        <section id = "demographics2">   <img src = "images/demog-chart.png" STYLE="position:absolute; LEFT:15%; WIDTH:70%"> 
+        </section>
 
-
-
-  <section id="langtrends" class="bg-light">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-8 mx-auto">
-          <h2>Language Trends</h2>
-          
-          <p class="lead">We chose to look into 6 main languages based on number of speakers in Miami.  </p>
-          <p class = "lead"><span class = "Spanish">Spanish, </span> <span class = "French"> French, </span> <span class = "Creole"> Creole, </span> <span class = "Russian"> Russian, </span> <span class = "Chinese"> Chinese, </span><span class = "Portuguese">and Portuguese</span></p>
-
-          <p class = "lead">Below is the prevalance of search terms on Google over time, which we can use as an indication of what is actually being talked about in Miami.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-
-  <div id = "chart" width = "100%" class = "mx-auto" >
-      <script async type="text/javascript" src="graph1a.js" id = "_graph1a_js">
-     // console.log
-        </script></div>
+<section id = "demo3"></section>
 
 
 
   <section id = "map-text" class="bg-light"> 
       <div class="container">
           <div class="col-lg-8 mx-auto">
-              <h2>Maps description here</h2>
-              <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero odio fugiat voluptatem dolor, provident officiis, id iusto! Obcaecati incidunt, qui nihil beatae magnam et repudiandae ipsa exercitationem, in, quo totam.</p>
+              <h2>Where these languages live</h2>
+              <p class="lead">Here we show how the top languages are distributed across Miami, highlighting pockets of the city where high percentages of people speak a particular language.</p>
         </div>    
 
 </div>
@@ -263,7 +263,7 @@
                   var updateMap = function() { 
                     var filename = $("#dropdown-select").val();
                     $("#mapBox").empty();
-                    var htmlString = '<img width = "75%" STYLE="position:absolute; LEFT:15%;" id="theMapImg" src="images/' + filename + '" />';
+                    var htmlString = '<img width = "70%" STYLE="position:absolute; LEFT:15%;" id="theMapImg" src="images/' + filename + '" />';
                     console.log(htmlString);
                     $("#mapBox").append(htmlString);
                   }
@@ -312,12 +312,53 @@
             </section>
 
 
-  <section id="businesses" class="bg-light">
+
+
+
+  <section id="langtrends" class="bg-light">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 mx-auto">
+            <h2>Language Trends</h2>
+                <p class = "lead">Next, we set out to study language vitality trends and use over time in Miami. We break each language down into cultural search terms about holidays, festivals, traditional music, and specialty foods popular across linguistically distinct communities in Miami. We compiled this dataset of cultural terms from Miami-based articles and websites that covered events, festivities, stores, and neighborhoods where one might come into contact with a specific community’s food, celebrations, or art, for example. 
+
+                </p>
+                <p class = "lead">                 Those sites include: Hispanic Heritage Month Event Site (Spanish), Cultural Center Websites (Russian), Cultural Film Festival Sites (Portuguese), Miami Arts and Culture Sites (Little Haiti), Miami Holidays and Festival sites, Miami Tourism Sites, and Miami Herald Cultural Opinion articles. 
+                  </p>
+   
+          </div>
+        </div>
+      </div>
+    </section>
+  
+  <section id = "langtrends2">
+    <div class = "container">
+      <div class = "row">
+        <div class = "col-lg-8 mx-auto">
+            <p class = "lead">Below is the prevalance of search terms on Google over time, which we can use as an indication of what is actually being talked about in Miami.</p>
+            <p class="lead">We chose to look into 6 main languages based on number of speakers in Miami:  <span class = "Spanish">Spanish, </span> <span class = "French"> French, </span> <span class = "Creole"> Creole, </span> <span class = "Russian"> Russian, </span> <span class = "Chinese"> Chinese, </span>and <span class = "Portuguese">Portuguese</span></p>
+        
+            <!-- <p class = "lead text-center"><span class = "Spanish">Spanish, </span> <span class = "French"> French, </span> <span class = "Creole"> Creole, </span> <span class = "Russian"> Russian, </span> <span class = "Chinese"> Chinese, </span><span class = "Portuguese">and Portuguese</span></p> -->
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+    <div id = "chart" width = "100%" class = "mx-auto" >
+        <!-- <p class = "lead text-center"><span class = "Spanish">Spanish, </span> <span class = "French"> French, </span> <span class = "Creole"> Creole, </span> <span class = "Russian"> Russian, </span> <span class = "Chinese"> Chinese, </span>and <span class = "Portuguese">Portuguese</span></p> -->
+        <script async type="text/javascript" src="graph1a.js" id = "_graph1a_js">
+       // console.log
+          </script>
+                    </div>
+
+  <section id="industries" class="bg-light">
     <div class="container">
       <div class="row">
         <div class="col-lg-8 mx-auto">
-          <h2>Business Section </h2>
-          <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero odio fugiat voluptatem dolor, provident officiis, id iusto! Obcaecati incidunt, qui nihil beatae magnam et repudiandae ipsa exercitationem, in, quo totam.</p>
+          <h2>Local industries </h2>
+          <p class="lead">Looking ahead, we would to complete more journalistic research to identify economic cultural sites in Miami such as restaurants, specialty shops, and community centers where one might come into  contact with the various cultural products, activities and celebrations found on our cultural search term visualization. Below we show a proportional break down of small businesses with foreign born owners across the US, by cultural industry (SOURCE).</p>
           <img src = "images/data-rect.png" STYLE="position:absolute; LEFT:10px; WIDTH:95%"> 
         </div>
       </div>
@@ -355,7 +396,8 @@
   <!-- Footer -->
   <footer class="py-5 bg-dark">
     <div class="container">
-      <p class="m-0 text-center text-white">Copyright &copy; Christine Langston & Elizabeth Borneman 2019</p>
+      <p class="m-0 text-center text-white">Copyright &copy; Christine Langston & Elizabeth Borneman </p>
+      <p class = "m-0 text-center text-white">11.154 Big Data, Visualization & Society -- May 2019</p>
     </div>
     <!-- /.container -->
   </footer>
