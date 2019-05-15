@@ -541,7 +541,8 @@ console.log(selected)
                //   svg.append("rect")
     .attr("width", "100%")
     .attr("height", "100%")
-    .attr("fill", "#f8f9fa");
+    .attr("fill", "white");//"#f8f9fa");
+
     svg2.append("g")
     .call(xAxis);
     
