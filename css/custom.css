@@ -20,7 +20,7 @@ h1 {
   }
 
   .bg-primary {
-    background-color: #5659EB !important;
+    background-color:#5659EB !important;
     opacity: 0.5 
   }
 
@@ -31,4 +31,9 @@ h1 {
 
   #map {
     height : 10
+  }
+
+  #mapSelector {
+    padding-top: 250px;
+    /*padding-bottom: 20px; */
   }

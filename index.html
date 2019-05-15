@@ -49,7 +49,7 @@
             <a class="nav-link js-scroll-trigger" href="#langtrends">Language Trends</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#map">Map</a>
+            <a class="nav-link js-scroll-trigger" href="#map-text">Map</a>
           </li>
           <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="#businesses">Businesses</a>
@@ -90,14 +90,6 @@
       <div class="row">
         <div class="col-lg-8 mx-auto">
 
-            
-            <!-- <img src="images/chinese-map.png" align = "left" alt="Girl in a jacket" style="width:500px;height:360px;">
-            <img src="images/french-map.png"align = "top"  alt="French Map" style="width:500px;height:360px;">
-            <img src="images/french-creole-map.png" align = "right" alt="Girl in a jacket" style="width:500px;height:360px;">
-            <img src="images/english-only-map.png" alt="Girl in a jacket" style="width:500px;height:360pxpx;">
-            <img src="images/russian-map.png" alt="Girl in a jacket" style="width:500px;height:360px;"> -->
-
-
           <h2>Introduction</h2>
           <p class="lead">This is a great place to talk about your webpage. This template is purposefully unstyled so you can use it as a boilerplate or starting point for you own landing page designs! This template features:</p>
           <ul>
@@ -112,6 +104,42 @@
   </section>
 
 
+  <section id="introduction2" class="bg-light">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 mx-auto">
+  
+            <h2>Introduction 2 </h2>
+            <p class="lead">This is a great place to talk about your webpage. This template is purposefully unstyled so you can use it as a boilerplate or starting point for you own landing page designs! This template features:</p>
+            <ul>
+              <li>Clickable nav links that smooth scroll to page sections</li>
+              <li>Responsive behavior when clicking nav links perfect for a one page website</li>
+              <li>Bootstrap's scrollspy feature which highlights which section of the page you're on in the navbar</li>
+              <li>Minimal custom CSS so you are free to explore your own unique design options</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <section id="introduction3">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-8 mx-auto">
+    
+              <h2>Introduction 3 </h2>
+              <p class="lead">This is a great place to talk about your webpage. This template is purposefully unstyled so you can use it as a boilerplate or starting point for you own landing page designs! This template features:</p>
+              <ul>
+                <li>Clickable nav links that smooth scroll to page sections</li>
+                <li>Responsive behavior when clicking nav links perfect for a one page website</li>
+                <li>Bootstrap's scrollspy feature which highlights which section of the page you're on in the navbar</li>
+                <li>Minimal custom CSS so you are free to explore your own unique design options</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
 
 
 
@@ -152,7 +180,7 @@
   <section id = "map-text"> 
       <div class="container">
           <div class="col-lg-8 mx-auto">
-              <h2>Maps here</h2>
+              <h2>Maps description here</h2>
               <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero odio fugiat voluptatem dolor, provident officiis, id iusto! Obcaecati incidunt, qui nihil beatae magnam et repudiandae ipsa exercitationem, in, quo totam.</p>
         </div>    
 
@@ -197,18 +225,18 @@
           <h2>Maps here</h2>
           <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero odio fugiat voluptatem dolor, provident officiis, id iusto! Obcaecati incidunt, qui nihil beatae magnam et repudiandae ipsa exercitationem, in, quo totam.</p>
          <script type="text/javascript" src="graph1a.js"></script> -->
-         <div class="dropdown">
-          <div id="mapSelector">
-            <form id="dropdown-form">
-                    <select id="dropdown-select">
+         <div class="dropdown" STYLE="position:absolute; LEFT:35%;">
+          <div id="mapSelector" >
+            <form id="dropdown-form" >
+                    <select id="dropdown-select" >
     
                             <option value="english-only-map.png">English Only</option>
                             <option value="spanish-map.png">Spanish or Spanish Creole</option>
-                            <option value="French">French (incl. Patois, Cajun)</option>
-                            <option value="French Creole">French Creole</option>
-                            <option value="Portuguese">Portuguese or Portuguese Creole</option>
-                            <option value="Russian">Russian</option>
-                            <option value="Chinese">Chinese</option>
+                            <option value="french-map.png">French (incl. Patois, Cajun)</option>
+                            <option value="french-creole-map.png">French Creole</option>
+                            <option value="portuguese-map.png">Portuguese or Portuguese Creole</option>
+                            <option value="russian-map.png">Russian</option>
+                            <option value="chinese-map.png">Chinese</option>
                             <!-- <option value="Estimate; Total: - Speak only English">English</option>
                             <option value="Estimate; Total: - Spanish or Spanish Creole:">Spanish</option>
                             <option value="Estimate; Total: - French (incl. Patois, Cajun):">French</option>
@@ -228,7 +256,7 @@
                   var updateMap = function() { 
                     var filename = $("#dropdown-select").val();
                     $("#mapBox").empty();
-                    var htmlString = '<img width = "80%" id="theMapImg" src="images/' + filename + '" />';
+                    var htmlString = '<img width = "75%" STYLE="position:absolute; LEFT:15%;" id="theMapImg" src="images/' + filename + '" />';
                     console.log(htmlString);
                     $("#mapBox").append(htmlString);
                   }
@@ -252,7 +280,7 @@
 
 
 
-        <section id="extra space" ">
+        <section id="extra space" >
             <div class="container">
               <div class="row">
                 <div class="col-lg-8 mx-auto">
@@ -263,6 +291,18 @@
               </div>
             </div>
           </section>
+
+          <section id="extra space2" >
+              <div class="container">
+                <div class="row">
+                  <div class="col-lg-8 mx-auto">
+                    <!-- <h2>Business Section </h2>
+                    <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero odio fugiat voluptatem dolor, provident officiis, id iusto! Obcaecati incidunt, qui nihil beatae magnam et repudiandae ipsa exercitationem, in, quo totam.</p>
+                 -->
+                  </div> 
+                </div>
+              </div>
+            </section>
 
 
   <section id="businesses" class="bg-light">
@@ -276,6 +316,7 @@
       </div>
     </div>
   </section>
+
   <section id="extra-businesses" class="bg-light">
       <div class="container">
         <div class="row">
@@ -291,9 +332,14 @@
       <div class="row">
         <div class="col-lg-8 mx-auto">
           <h2>Learn more</h2>
-          <p class="lead">Lorem ipsum dolor sit amet, 
-            consectetur adipisicing elit. Vero odio fugiat voluptatem dolor, 
-            provident officiis, id iusto! Obcaecati incidunt, qui nihil beatae magnam et repudiandae ipsa exercitationem, in, quo totam.</p>
+          <p class="lead">Our data sources included the following
+            </p>
+            <ul>
+                <li>Clickable nav links that smooth scroll to page sections</li>
+                <li>Responsive behavior when clicking nav links perfect for a one page website</li>
+                <li>Bootstrap's scrollspy feature which highlights which section of the page you're on in the navbar</li>
+                <li>Minimal custom CSS so you are free to explore your own unique design options</li>
+              </ul>
         </div>
       </div>
     </div>

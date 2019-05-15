@@ -34,7 +34,8 @@ d3.csv("https://raw.githubusercontent.com/christinelangston/BigData11.154/master
     
     let yAxis = g => g
         .attr("transform", `translate(${margin.left},0)`)
-        .call(d3.axisLeft(y))
+    
+        .call(d3.axisLeft(y).ticks(3))
         .call(g => g.select(".domain").remove())
         .call(g => g.select(".tick:last-of-type text").clone()
             .attr("x", 3)
