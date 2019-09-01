@@ -16,9 +16,16 @@ d3.csv("https://raw.githubusercontent.com/christinelangston/BigData11.154/master
 
     var chartcontainer = d3.select("#chart");
     var svg = chartcontainer//d3.select("body")
+    .append("div")
+    //.classed("svg-container", true) 
     .append("svg")
-    .attr("width", width)
-    .attr("height", height);
+    //.attr("preserveAspectRatio", "xMinYMin meet")
+    //.attr("viewBox", "0 0 300 300")
+    //.classed("svg-content-responsive", true);
+     .attr("width", width)
+     .attr("height", height);
+
+
 
     let x = d3.scaleTime()
         .domain(d3.extent(dataTerm, d => d.Month))
@@ -524,9 +531,18 @@ console.log(selected)
 
             var chart2container = d3.select("#chart");
             var svg2 = chart2container//d3.select("body")
-            .append("svg")
-            .attr("width", width)
-            .attr("height", height);
+              .append("div")
+              .classed("svg-container", true) 
+              .append("svg")
+              .attr("preserveAspectRatio", "xMinYMin meet")
+              .attr("viewBox", "0 0 300 300")
+              .classed("svg-content-responsive", true);
+              // .attr("width", width)
+              // .attr("height", height);
+
+            // .append("svg")
+            // .attr("width", width)
+            // .attr("height", height);
 
 
           svg2.append("g")

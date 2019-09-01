@@ -67,3 +67,19 @@ height: 1000
   span.Chinese {color:#5659EB}
   span.Portuguese {color:#55EB9E}
 
+
+.svg-container {
+    display: inline-block;
+    position: relative;
+    width: 100%; /* was 100*/
+    padding-bottom: 100%; /* aspect ratio was 100*/
+    vertical-align: top;
+    overflow: hidden;
+  }
+
+.svg-content-responsive {
+    display: inline-block;
+    position: absolute;
+    top: 10px;
+    left: 0;
+  }
