@@ -9,23 +9,33 @@ d3.csv("https://raw.githubusercontent.com/christinelangston/BigData11.154/master
         height = 615 - margin.top - margin.bottom;
     let value = null;
 
+          //  "#D04DFF" //Purple       French
+          // #9AFF5E";//Leafy Green  Russian
+          // "#5659EB" //Blue Purple   Chinese
+          //"#6BDAFF"//Sky Blue       Spanish
+          // "#55EB9E"// Lime Green     Portuguese
+          // "#FFB233";//Red/Orange}    French Creole
+
     var colors = {color1: "#D04DFF", color2: "#9AFF5E", color3: "#5659EB"  , color4: "#6BDAFF" , color5: "#55EB9E", color6:  "#FFB233"}
 
     let  selected = {data: {data1:"", data2: "", data3: "", data4: "", data5: ""}, 
     colors: colors};
 
     var chartcontainer = d3.select("#chart");
-    var svg = chartcontainer//d3.select("body")
+    var svg = chartcontainer
+    .append("div")
     .append("svg")
-    .attr("width", width)
-    .attr("height", height);
+     .attr("width", width)
+     .attr("height", height);
+
+
 
     let x = d3.scaleTime()
         .domain(d3.extent(dataTerm, d => d.Month))
         .range([margin.left, width - margin.right])
     
     let y = d3.scaleLinear()
-        .domain([0, 100]).nice() // d3.max(data, d => d["puerto rico: (Miami-Ft. Lauderdale FL)"])
+        .domain([0, 100]).nice() 
         .range([height - margin.bottom, margin.top])
     
     let xAxis = g => g
@@ -42,36 +52,28 @@ d3.csv("https://raw.githubusercontent.com/christinelangston/BigData11.154/master
             .attr("text-anchor", "start")
             .attr("font-weight", "bold")
             .text(dataTerm.y))
-    
-
-          //   var color1 = "#D04DFF" //Purple       French
-          //   var color2 = "#9AFF5E";//Leafy Green  Russian
-          //   var color3 = "#5659EB" //Blue Purple   Chinese
-          //   var color4 = "#6BDAFF"//Sky Blue       Spanish
-          //  var color5 = "#55EB9E"// Lime Green     Portuguese
-          //  var color6 = "#FFB233";//Red/Orange}    French Creole
 
             function getSelected(value) {
               var selected = "";
                
-              if (value == "Spanish"){ //"#6BDAFF"
+              if (value == "Spanish"){ 
                 selected =  {data: {data1: dataTerm.columns[7], data2: dataTerm.columns[8], data3: dataTerm.columns[9], data4: dataTerm.columns[10], data5:dataTerm.columns[11] },
                               colors: {color1: "#6BDAFF", color2: "#9EBBFF", color3: "#56A3E8", color4: "#56E4E8", color5: "#99FFE9"}
-                            }   //
-              }else if (value == "Creole"){ //FFB233
+                            }   
+              }else if (value == "Creole"){ 
                 selected =  {data:{data1: dataTerm.columns[12], data2: dataTerm.columns[13], data3: dataTerm.columns[14], data4: dataTerm.columns[15], data5: dataTerm.columns[16]},
                 colors: {color1: "#FFB233", color2: "#FFE82E", color3: "#EBB510", color4: "#EBA773", color5: "#FF4C14"}
               };
-              }else if (value == "Portuguese"){ //55EB9E
+              }else if (value == "Portuguese"){ 
                 selected = {data: {data1: dataTerm.columns[22], data2: dataTerm.columns[23], data3: dataTerm.columns[24], data4: dataTerm.columns[25], data5: dataTerm.columns[26]},
                   colors: {color1: "#55EB9E", color2: "#5597FA", color3: "#13CBD6", color4: "#38D622", color5: "#DBFA3C"}};
-              }else if (value == "French"){ // D04DFF
+              }else if (value == "French"){ 
                 selected = {data: {data1: dataTerm.columns[17], data2: dataTerm.columns[18], data3: dataTerm.columns[19], data4: dataTerm.columns[20], data5: dataTerm.columns[21]},
                   colors:  {color1: "#D04DFF", color2: "#FF80D0", color3: "#E23AE8", color4: "#913AE8", color5: "#9E7AFF"}};
-              }else if (value == "Chinese"){ //5659EB
+              }else if (value == "Chinese"){
                 selected =  {data: {data1: dataTerm.columns[32], data2: dataTerm.columns[33], data3: dataTerm.columns[34], data4: dataTerm.columns[35], data5: ""}, 
                   colors: {color1: "#5659EB", color2: "#BC8CF6", color3: "#6344D4", color4: "#4467D4", color5: "#87BBF6"}} ;
-              }else if (value == "Russian"){ //9AFF5E
+              }else if (value == "Russian"){
                   selected ={data:  {data1: dataTerm.columns[27], data2: dataTerm.columns[28], data3: dataTerm.columns[29], data4: dataTerm.columns[30], data5: ""}, 
                     colors: {color1: "#9AFF5E", color2: "#8AFFC9", color3: "#17EB31", color4: "#D4EB28", color5: "#FFF080"}};
               } 
@@ -89,43 +91,34 @@ d3.csv("https://raw.githubusercontent.com/christinelangston/BigData11.154/master
     
     var area_SP = d3.area()
       .x(function(d) { return x(d.Month); })
-        .y0(function(d) { return y(d["French"]); } )
-       // .y0(height - margin.bottom) // .y0(function(d) { return y(d["puerto rico: (Miami-Ft. Lauderdale FL)"]); } )
+      .y0(function(d) { return y(d["French"]); } )
       .y1(function(d) { return y(d[dataTerm.columns[1]]) ; });
     
     var area_FR = d3.area()
       .x(function(d) { return x(d.Month); })
-     //   .y0(height - margin.bottom-3)
-          .y0(function(d) { return y(d["Russian"]); } )
-  
-     // .y0(function(d) { return y(d["puerto rico: (Miami-Ft. Lauderdale FL)"] - 10); } )
+      .y0(function(d) { return y(d["Russian"]); } )
       .y1(function(d) { return y(d["French"]); });
     
     
     var area_CH = d3.area()
-      .x(function(d) { return x(d.Month); }) //.y0(height - margin.bottom)
+      .x(function(d) { return x(d.Month); }) 
         .y0(function(d) { return y(d["Russian"]); } )
       .y1(function(d) { return y(d["Chinese"]); });
     
       var area_RU = d3.area()
       .x(function(d) { return x(d.Month); })
-     // .y0(height - margin.bottom - 3)
-            .y0(function(d) { return y(d["Portuguese"]); } )
-  
-    //    .y0(function(d) { return y(d["russian: (Miami-Ft. Lauderdale FL)"] - 10); }) 
+      .y0(function(d) { return y(d["Portuguese"]); } )
       .y1(function(d) { return y(d["Russian"]); });
     
         var area_PO = d3.area()
       .x(function(d) { return x(d.Month); })
       .y0(height - margin.bottom -3)
-    //    .y0(function(d) { return y(d["russian: (Miami-Ft. Lauderdale FL)"] - 10); }) 
       .y1(function(d) { return y(d["Portuguese"]); });
     
       var area_FCR = d3.area()
       .x(function(d) { return x(d.Month); })
       .y0(height - margin.bottom)
-    //    .y0(function(d) { return y(d["russian: (Miami-Ft. Lauderdale FL)"] - 10); }) 
-      .y1(function(d) { return y(d["Creole"]) ; });      // -3    
+      .y1(function(d) { return y(d["Creole"]) ; });    
     
     
       var line_SP = d3.line()
@@ -156,7 +149,7 @@ d3.csv("https://raw.githubusercontent.com/christinelangston/BigData11.154/master
       var line_FCR = d3.line()
       .defined(d => !isNaN(d["Creole"]))
        .x(d => x(d.Month))
-      .y(function(d) { return y(d["Creole"]); });     //+ 0.5
+      .y(function(d) { return y(d["Creole"]); });
      
   
       
@@ -168,11 +161,7 @@ d3.csv("https://raw.githubusercontent.com/christinelangston/BigData11.154/master
         .style("font-size", "14px")
         .style("z-index", "10")
         .style("visibility", "hidden")
-       // .style("opacity", 0.6)
-       // .style("background", "white")
-        .style("padding", "3px"); 
-    //d3.selectAll("#tooltip, #tooltip *");
-    
+        .style("padding", "3px");     
     
   
   function equalToEventTarget() {
@@ -189,21 +178,7 @@ d3.csv("https://raw.githubusercontent.com/christinelangston/BigData11.154/master
     
     tooltipWithContent   
     tooltip 
-   
-    //   var color1 = "#D04DFF" //Purple       
-    //  var color2 = "#9AFF5E";//Leafy Green  
-    //  var color3 = "#5659EB" //Blue Purple
-    //  var color4 = "#6BDAFF"//Sky Blue
-    // var color5 = "#55EB9E"// Lime Green
-    // var color6 = "#FFB233";//Red/Orange
-  
 
-//     Red/Orange - #FFB233
-// Purple - #D04DFF
-// Blue Purple - #5659EB
-// Sky Blue - #6BDAFF
-// Lime Green - #55EB9E
-// Leafy Green - #9AFF5E
   
      var t1 = textures.circles()
     .size(5)
@@ -224,14 +199,7 @@ d3.csv("https://raw.githubusercontent.com/christinelangston/BigData11.154/master
     .size(5)
     .radius(1)
     .fill(colors.color4)
-      // .fill("white")
-      // .background(color4)
-    
-  
-    //   var t4 =  textures.lines()
-    // .size(4)
-    // .strokeWidth(1)
-    //   .stroke(color4);
+
        
         var t5 = textures.circles()
     .size(5)
@@ -319,9 +287,8 @@ d3.csv("https://raw.githubusercontent.com/christinelangston/BigData11.154/master
     .on("click", d => { value = "Spanish"; console.log(value);
     updateLines(getSelected(value));
           const node = svg.node();
-          node.value = "Spanish"; //value = value === d.properties.OBJECTID ? null : "Spanish";//d.properties.Name;
+          node.value = "Spanish";
           node.dispatchEvent(new CustomEvent("input"));
-   //       outline.attr("d", value ? path(d) : null);
             });
          
   
@@ -334,12 +301,11 @@ d3.csv("https://raw.githubusercontent.com/christinelangston/BigData11.154/master
           .attr("fill", colors.color1)
          .style("fill", t1.url())
           .on("mouseover", d => tooltipWithContent.style("visibility", "visible").text("French") && FRline.attr("stroke", colors.color1))
-       //  .on("mouseover", d => PRline.attr("stroke", color1))
           .on("mousemove", d => tooltipWithContent.style("top", (d3.event.pageY-10)+"px").style("left",(d3.event.pageX+10)+"px").text("French"))
           .on("mouseout", d => tooltipWithContent.style("visibility", "hidden") && FRline.attr("stroke", "white"))
           .on("click", d => {   value = "French";   console.log(value); updateLines(getSelected(value));
           const node = svg.node();
-          node.value = "French"; //value = value === d.properties.OBJECTID ? null : "Spanish";//d.properties.Name;
+          node.value = "French";
           node.dispatchEvent(new CustomEvent("input"));;
       });
     
@@ -353,12 +319,12 @@ d3.csv("https://raw.githubusercontent.com/christinelangston/BigData11.154/master
           .attr("fill", colors.color3)
          .style("fill", t3.url())
       .on("mouseover", d => tooltipWithContent.style("visibility", "visible").text("Chinese") && CHline.attr("stroke", colors.color3))
-   //     .on("mouseover", d => rectangle.style("fill", "red"))
+  
       .on("mousemove", d => tooltipWithContent.style("top", (d3.event.pageY-10)+"px").style("left",(d3.event.pageX+10)+"px").text("Chinese"))
       .on("mouseout", d => tooltipWithContent.style("visibility", "hidden") && CHline.attr("stroke", "white"))
           .on("click", d => { value = "Chinese";   console.log(value);  updateLines(getSelected(value));
           const node = svg.node();
-          node.value = "Chinese"; //value = value === d.properties.OBJECTID ? null : "Spanish";//d.properties.Name;
+          node.value = "Chinese"; 
           node.dispatchEvent(new CustomEvent("input"));;
       });
   
@@ -378,7 +344,7 @@ d3.csv("https://raw.githubusercontent.com/christinelangston/BigData11.154/master
           .on("mouseout", d => tooltipWithContent.style("visibility", "hidden") && RUline.attr("stroke", "white"))
           .on("click", d => {   value = "Russian";  console.log(value);  updateLines(getSelected(value));
           const node = svg.node();
-          node.value = "Russian"; //value = value === d.properties.OBJECTID ? null : "Spanish";//d.properties.Name;
+          node.value = "Russian"; 
           node.dispatchEvent(new CustomEvent("input"));;
       });
     
@@ -398,7 +364,7 @@ d3.csv("https://raw.githubusercontent.com/christinelangston/BigData11.154/master
        .on("mouseout", d => tooltipWithContent.style("visibility", "hidden") && POline.attr("stroke", "white"))
        .on("click", d => {   value = "Portuguese";   console.log(value);  updateLines(getSelected(value));
        const node = svg.node();
-       node.value = "Portuguese"; //value = value === d.properties.OBJECTID ? null : "Spanish";//d.properties.Name;
+       node.value = "Portuguese"; 
        node.dispatchEvent(new CustomEvent("input"));;
    });
              
@@ -416,7 +382,7 @@ d3.csv("https://raw.githubusercontent.com/christinelangston/BigData11.154/master
           .on("click", d => {   value = "Creole";   console.log(value); console.log(value);
           updateLines(getSelected(value));
           const node = svg.node();
-          node.value = "Creole"; //value = value === d.properties.OBJECTID ? null : "Spanish";//d.properties.Name;
+          node.value = "Creole";
           node.dispatchEvent(new CustomEvent("input"));;
       });
     
@@ -524,9 +490,18 @@ console.log(selected)
 
             var chart2container = d3.select("#chart");
             var svg2 = chart2container//d3.select("body")
-            .append("svg")
-            .attr("width", width)
-            .attr("height", height);
+              .append("div")
+              .classed("svg-container", true) 
+              .append("svg")
+              .attr("preserveAspectRatio", "xMinYMin meet")
+              .attr("viewBox", "0 0 300 300")
+              .classed("svg-content-responsive", true);
+              // .attr("width", width)
+              // .attr("height", height);
+
+            // .append("svg")
+            // .attr("width", width)
+            // .attr("height", height);
 
 
           svg2.append("g")
