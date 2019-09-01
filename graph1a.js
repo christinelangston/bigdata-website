@@ -491,17 +491,9 @@ console.log(selected)
             var chart2container = d3.select("#chart");
             var svg2 = chart2container//d3.select("body")
               .append("div")
-              .classed("svg-container", true) 
               .append("svg")
-              .attr("preserveAspectRatio", "xMinYMin meet")
-              .attr("viewBox", "0 0 300 300")
-              .classed("svg-content-responsive", true);
-              // .attr("width", width)
-              // .attr("height", height);
-
-            // .append("svg")
-            // .attr("width", width)
-            // .attr("height", height);
+               .attr("width", width)
+               .attr("height", height);
 
 
           svg2.append("g")
@@ -513,10 +505,9 @@ console.log(selected)
           function updateLines(selected){
             console.log(selected);
                svg2.append("rect")
-               //   svg.append("rect")
     .attr("width", "100%")
     .attr("height", "100%")
-    .attr("fill", "white");//"#f8f9fa");
+    .attr("fill", "white");
 
     svg2.append("g")
     .call(xAxis);
